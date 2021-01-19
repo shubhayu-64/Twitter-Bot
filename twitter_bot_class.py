@@ -63,7 +63,7 @@ class Twitter_Bot:
             time.sleep(5)
             email = bot.find_element_by_name('session[username_or_email]')
             password = bot.find_element_by_name('session[password]')
-        
+
         email.clear()
         password.clear()
         email.send_keys(self.email)
@@ -71,7 +71,6 @@ class Twitter_Bot:
         password.send_keys(keys.Keys.RETURN)
         time.sleep(10)
         self.is_logged_in = True
-
 
     def logout(self):
         if not self.is_logged_in:
@@ -136,7 +135,7 @@ class Twitter_Bot:
         if not self.is_logged_in:
             raise Exception("You must log in first!") 
 
-        bot = self.bot   
+        bot = self.bot
 
         for i in range(cycles):
             try:
@@ -153,7 +152,29 @@ class Twitter_Bot:
             bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)') 
             time.sleep(5)
 
-      
+
+    def retweet(self,cycles=10):
+        if not self.is_logged_in:
+            raise Exception("You must log in first!")
+        bot = self.bot
+
+        for i in range(cycles):
+            try:
+                bot.find_element_by_xpath("//div[@data-testid='retweet']").click()
+                time.sleep(1)
+                bot.find_element_by_xpath("//div[@data-testid='retweetConfirm']").click()
+            except common.exceptions.NoSuchElementException:
+                time.sleep(3)
+                bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)')
+                time.sleep(3)
+                bot.find_element_by_xpath("//div[@data-testid='retweet']").click()
+                time.sleep(1)
+                bot.find_element_by_xpath("//div[@data-testid='retweetConfirm']").click()
+            time.sleep(1)
+            bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)')
+            time.sleep(5)
+
+
     def post_tweets(self,tweetBody):
         if not self.is_logged_in:
             raise Exception("You must log in first!")

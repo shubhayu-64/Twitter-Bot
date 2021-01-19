@@ -5,10 +5,10 @@ if __name__ == "__main__":
     try:
         EMAIL = input("Provide your Phone, email or username: ")
         PASSWORD = input("Provide your password: ")
-        tbot = Twitter_Bot(EMAIL, PASSWORD)
+        tbot = Twitter_Bot(EMAIL,PASSWORD)
         tbot.login()
         tbot.search('100DaysOfCode')
-        tbot.like_tweets(10)
+        tbot.retweet(10)
         tbot.logout()
     except Exception as e:
         tbot.logout()

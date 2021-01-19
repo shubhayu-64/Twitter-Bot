@@ -5,7 +5,7 @@ if __name__ == "__main__":
     EMAIL = input("Provide your Phone, email or username: ")
     PASSWORD = input("Provide your password: ")
     try:
-        tbot = TwitterBot(EMAIL, PASSWORD)
+        tbot = Twitter_Bot(EMAIL, PASSWORD)
         tbot.login()
         tbot.like_tweets(10)
         tbot.logout()
