@@ -10,7 +10,7 @@ Twitter-Bot is an automation bot using Selenium Automation Framework with python
 1. Create a ```python``` virtual environment.
 2. Clone the repo ```git clone https://github.com/shubhayu-64/Twitter-Bot.git ``` 
 3. Go to the cloned directory ``` cd Twitter-Bot ```
-4. Run ``` pip3 install selenium ``` and ``` pip3 install geckodrivermanager```
+4. Run ``` pip3 install selenium ``` and ``` pip3 install webdriver_manager```
 5. And now you can run the example scripts or create your own scripts.  
 
 ## Usage
