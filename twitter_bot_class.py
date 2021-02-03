@@ -15,6 +15,7 @@ class Twitter_Bot:
         - Searching for some keyword or hashtag
         - Liking tweets of the search results
         - Posting tweets
+        - Retweeting tweets
         - Logging out of your account
 
     ........
@@ -40,6 +41,8 @@ class Twitter_Bot:
         searches for the provided query string
     like_tweets(cycles: int)
         loops over number of cycles provided, scrolls the page down and likes the available tweets on the page in each loop pass
+    retweet(cycles: int)
+        loops over number of cycles provided, scrolls the page down and retweets the available tweets on the page in each loop pass
     """
     
 
