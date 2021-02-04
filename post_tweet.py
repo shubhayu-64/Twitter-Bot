@@ -12,5 +12,3 @@ if __name__ == "__main__":
     except Exception as e:
         tbot.logout()
         print(e)
-
-#ignore
