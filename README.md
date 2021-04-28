@@ -34,3 +34,12 @@ Please make sure to update tests as appropriate.
 
 ## What next?
 I will be working on adding feature of finding and following new users. Apart from that I will also add features to perform other tasks on tweets such as sharing on other platforms or messaging someone.
+
+## 🙋‍♂️ Support
+
+💙 If you like this project, give it a ⭐ and share it with friends!<br><br>
+[☕ Buy me a coffee](https://www.buymeacoffee.com/shubhayu64)
+
+---
+
+Made with ❤️ and Python <br><br>
