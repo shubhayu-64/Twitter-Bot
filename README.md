@@ -33,7 +33,7 @@ Please make sure to update tests as appropriate.
 [MIT © Shubhayu Majumdar](https://github.com/shubhayu-64/Twitter-Bot/blob/main/LICENSE)
 
 ## What next?
-I will be working on adding feature of finding and following new users. Apart from that I will also add features to perform other tasks on tweets such as sharing on other platforms or messaging someone.
+I will be working on adding feature of finding and following new users. Apart from that I will also add features to perform other tasks on tweets such as sharing on other platforms or messaging someone. 
 
 ## 🙋‍♂️ Support
 
