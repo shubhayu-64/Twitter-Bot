@@ -25,7 +25,7 @@ Twitter-Bot is an automation bot using Selenium Automation Framework with python
 - For any other problems, feel free to raise an issue.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 
 
 Please make sure to update tests as appropriate.
 
@@ -33,7 +33,7 @@ Please make sure to update tests as appropriate.
 [MIT © Shubhayu Majumdar](https://github.com/shubhayu-64/Twitter-Bot/blob/main/LICENSE)
 
 ## What next?
-I will be working on adding feature of finding and following new users. Apart from that I will also add features to perform other tasks on tweets such as sharing on other platforms or messaging someone. 
+I will be working on adding feature of finding and following new users. Apart from that I will also add features to perform other tasks on tweets such as sharing on other platforms or messaging someone.
 
 ## 🙋‍♂️ Support
 
