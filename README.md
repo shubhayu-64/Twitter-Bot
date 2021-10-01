@@ -20,7 +20,7 @@ Twitter-Bot is an automation bot using Selenium Automation Framework with python
 - To retweet based on keyword, run ``` python3 keyword_tweets_retweet.py```
 
 ## FAQ
-- How to stop the script? Ctrl+C (control+C for Mac)
+- How to stop the script? Ctrl+C (control+C for Mac) 
 - Script opens browser and nothing happens? Try checking the terminal. It might be asking for credentials.
 - For any other problems, feel free to raise an issue.
 
