@@ -7,7 +7,8 @@ if __name__ == "__main__":
         PASSWORD = input("Provide your password: ")
         tbot = Twitter_Bot(EMAIL,PASSWORD)
         tbot.login()
-        tbot.search('100DaysOfCode')
+        kw=input('Enter keyword')#Enter keyword to search tweets for retweeting
+        tbot.search(kw)
         tbot.retweet(10)
         tbot.logout()
     except Exception as e:
