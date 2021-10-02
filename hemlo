@@ -1,1 +1,25 @@
 Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii!!!!!!!!!!!!!!!
+i am writing the following code 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int binary_expo(int a, int b)
+{
+  int res = 1;
+  while(b>0){ 
+      if(b&1)
+        res = res * a;
+      a = a * a;
+      b >>= 1;
+    }
+  return res;
+}
+
+int main()
+{
+  int a,b;
+  cin>>a>>b;
+  
+  cout<<binary_expo(a,b);
+}
