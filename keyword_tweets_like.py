@@ -9,6 +9,8 @@ if __name__ == "__main__":
         tbot.login()
         tbot.search('100DaysOfCode')
         tbot.like_tweets(10)
+        tbot.search('hacktober')
+        tbot.like_tweets(10)
         tbot.logout()
     except Exception as e:
         tbot.logout()
