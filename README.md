@@ -3,7 +3,7 @@
 <a href="https://github.com/shubhayu-64/Twitter-Bot/blob/main/LICENSE" alt="Lisence"><img src="https://img.shields.io/github/license/shubhayu-64/Twitter-Bot"></a> <a href="https://github.com/shubhayu-64/Twitter-Bot/issues" alt="Issues"><img src="https://img.shields.io/github/issues/shubhayu-64/Twitter-Bot"></a> <a href="https://twitter.com/intent/follow?screen_name=shubhayu64" alt="Twiter-Follow"><img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fshubhayu64"></a>
 </p>
 
-Twitter-Bot is an automation bot using Selenium Automation Framework with python. This replaces the use of Twitter API as it is costly and takes much time to get access to. You can use it to post tweets, retweet based on keyword and like tweets on the homepage or like tweets based on keywords. 
+Twitter-Bot is an automation bot using Selenium Automation Framework with python. This replaces the use of Twitter API as it is costly and takes much time to get access to. You can use it to post tweets, retweet based on keyword and    like tweets on the homepage or like tweets based on keywords. 
 
 ## How to Install
 
