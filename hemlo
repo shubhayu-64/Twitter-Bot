@@ -1,4 +1,4 @@
-Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii!!!!!!!!!!!!!!!
+Hiiiiiiiiiiiiiiiiiiiiiiiiiii !!!!!! Holaaa !!!!!
 i am writing the following code 
 
 #include <bits/stdc++.h>
@@ -31,7 +31,9 @@ me me writing this this
 #include<stdio.h>
 #include<string.h>
 
-void main(){
+#this is the main function
+void main()
+{
     //taking max value 1000 for no of characters
 	static char p[1000], q[1000], r[1000];
 	
