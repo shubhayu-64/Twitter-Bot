@@ -42,4 +42,4 @@ I will be working on adding feature of finding and following new users. Apart fr
 
 ---
 
-Made with ❤️ and Python <br><br>  
+Made with ❤️ and Python <br><br>
