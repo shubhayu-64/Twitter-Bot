@@ -21,11 +21,12 @@ class Twitter_Bot:
     ........
 
     Attributes
+    
     ----------
     email : str
-        user email for Twitter account
+        user email for authentication of Twitter account
     password : str
-        user password for Twitter account
+        user password for authentication of Twitter account
     bot : WebDriver
         webdriver that carry out the automation tasks
     is_logged_in : bool
@@ -53,7 +54,7 @@ class Twitter_Bot:
         self.bot.maximize_window()
         self.is_logged_in = False
 
-
+    #Login Function 
     def login(self):
         bot = self.bot
         bot.get('https://twitter.com/login/')
@@ -74,7 +75,8 @@ class Twitter_Bot:
         password.send_keys(keys.Keys.RETURN)
         time.sleep(10)
         self.is_logged_in = True
-
+        
+    #Logout Function
     def logout(self):
         if not self.is_logged_in:
             return 
@@ -110,7 +112,7 @@ class Twitter_Bot:
 
         bot.close()
 
-
+    #Search Function : Make searches based on keywords
     def search(self, query=''):
         if not self.is_logged_in:
             raise Exception("You must log in first!")
@@ -133,7 +135,7 @@ class Twitter_Bot:
         time.sleep(10)
         """
 
-
+    #Function meant for liking tweets
     def like_tweets(self, cycles=10):
         if not self.is_logged_in:
             raise Exception("You must log in first!") 
@@ -155,7 +157,7 @@ class Twitter_Bot:
             bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)') 
             time.sleep(5)
 
-
+    #This function retweets posts based on keywords
     def retweet(self,cycles=10):
         if not self.is_logged_in:
             raise Exception("You must log in first!")
@@ -177,7 +179,7 @@ class Twitter_Bot:
             bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)')
             time.sleep(5)
 
-
+    #Function to post tweets
     def post_tweets(self,tweetBody):
         if not self.is_logged_in:
             raise Exception("You must log in first!")
