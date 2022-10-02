@@ -1,7 +1,7 @@
 import os
 from twitter_bot_class import Twitter_Bot
 """
-Tweets so the world can see it.
+Tweets so the world can see it
 """
 
 if __name__ == "__main__":
