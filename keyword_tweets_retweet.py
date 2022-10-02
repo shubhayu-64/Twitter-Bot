@@ -1,6 +1,8 @@
 import os
 from twitter_bot_class import Twitter_Bot
-
+"""
+Retweet the tweets depending on the keywords you entered.
+"""
 if __name__ == "__main__":
     try:
         EMAIL = input("Provide your Phone, email or username: ")

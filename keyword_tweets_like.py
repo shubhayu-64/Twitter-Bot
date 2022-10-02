@@ -1,5 +1,8 @@
 import os
 from twitter_bot_class import Twitter_Bot
+"""
+Likes tweets based on the keywords you entered
+"""
 
 if __name__ == "__main__":
     try:

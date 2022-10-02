@@ -1,6 +1,8 @@
 import os
 from twitter_bot_class import Twitter_Bot
-
+"""
+Automatically likes the tweets in your feed.
+"""
 if __name__ == "__main__":
     EMAIL = input("Provide your Phone, email or username: ")
     PASSWORD = input("Provide your password: ")
