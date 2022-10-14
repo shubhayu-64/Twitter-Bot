@@ -4,6 +4,8 @@ from twitter_bot_class import Twitter_Bot
 Tweets so the world can see it
 """
 
+
+
 if __name__ == "__main__":
     try:
         EMAIL = input("Provide your Phone, email or username: ")
