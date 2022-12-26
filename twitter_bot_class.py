@@ -62,38 +62,30 @@ class Twitter_Bot:
         bot = self.bot
         bot.get('https://twitter.com/login/')
         
-        email_field = WebDriverWait(driver, 60).until(
-            EC.visibility_of_element_located((
-                By.XPATH,
-                '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input'
-            ))
-        )
+        email_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+            (By.XPATH,
+            '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input')
+        ))
         email_field.clear()
         email_field.send_keys(self.email)
 
-        next_button = WebDriverWait(driver, 60).until(
-            EC.visibility_of_element_located((
-                By.XPATH,
-                '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]/div/span'
-            ))
-        )
+        next_button = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+            (By.XPATH,
+            '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]/div/span')
+        ))
         next_button.click()
 
-        password_field = WebDriverWait(driver, 60).until(
-            EC.visibility_of_element_located((
-                By.XPATH,
-                '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input'
-            ))
-        )
+        password_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+            (By.XPATH,
+            '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input')
+        ))
         password_field.clear()
         password_field.send_keys(self.password)
 
-        next_button = WebDriverWait(driver, 60).until(
-            EC.visibility_of_element_located((
-                By.XPATH,
-                '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/div/div'
-            ))
-        )
+        next_button = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+            (By.XPATH,
+            '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/div/div')
+        ))
         next_button.click()
 
         self.is_logged_in = True
@@ -108,16 +100,16 @@ class Twitter_Bot:
         bot.get('https://twitter.com/home')
 
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-                By.XPATH, "//div[@data-testid='SideNav_AccountSwitcher_Button']"
+                (By.XPATH, "//div[@data-testid='SideNav_AccountSwitcher_Button']")
         )).click()
 
 
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-                By.XPATH, "//a[@data-testid='AccountSwitcher_Logout_Button']"
+                (By.XPATH, "//a[@data-testid='AccountSwitcher_Logout_Button']")
         )).click()
 
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-                By.XPATH, "//div[@data-testid='confirmationSheetConfirm']"
+                (By.XPATH, "//div[@data-testid='confirmationSheetConfirm']")
         )).click()
 
         self.is_logged_in = False
@@ -132,7 +124,7 @@ class Twitter_Bot:
         bot = self.bot
 
         searchbox = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-                By.XPATH, "//input[@data-testid='SearchBox_Search_Input']"
+                (By.XPATH, "//input[@data-testid='SearchBox_Search_Input']")
         )).click()
 
         searchbox.clear()
@@ -200,16 +192,16 @@ class Twitter_Bot:
         bot = self.bot  
 
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-                By.XPATH, "//a[@data-testid='SideNav_NewTweet_Button']"
+                (By.XPATH, "//a[@data-testid='SideNav_NewTweet_Button']")
         )).click()
 
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-                By.XPATH, "//div[@role='textbox']"
+                (By.XPATH, "//div[@role='textbox']")
         )).send_keys(tweetBody)
 
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-            By.CLASS_NAME, "notranslate"
+            (By.CLASS_NAME, "notranslate")
         )).send_keys(keys.Keys.ENTER)
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-            By.XPATH, "//div[@data-testid='tweetButton']"
+            (By.XPATH, "//div[@data-testid='tweetButton']")
         )).send_keys(keys.Keys.ENTER)
