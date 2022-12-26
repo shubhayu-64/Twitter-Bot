@@ -1,6 +1,9 @@
 from selenium import webdriver
 from selenium import common
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common import keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.firefox import GeckoDriverManager
 import time
 
@@ -58,23 +61,29 @@ class Twitter_Bot:
     def login(self):
         bot = self.bot
         bot.get('https://twitter.com/login/')
-        time.sleep(5)
+        
+        email_field = WebDriverWait(driver, 60).until(
+            EC.visibility_of_element_located((
+                By.XPATH,
+                '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input'
+            ))
+        )
+        email_field.clear()
+        email_field.send_keys(self.email)
 
-        try:
-            email = bot.find_element_by_name('session[username_or_email]')
-            password = bot.find_element_by_name('session[password]')
-        except common.exceptions.NoSuchElementException:
-            time.sleep(5)
-            email = bot.find_element_by_name('session[username_or_email]')
-            password = bot.find_element_by_name('session[password]')
-
-        email.clear()
-        password.clear()
-        email.send_keys(self.email)
-        password.send_keys(self.password)
-        password.send_keys(keys.Keys.RETURN)
-        time.sleep(10)
-        self.is_logged_in = True
+        next_button = WebDriverWait(driver, 60).until(
+            EC.visibility_of_element_located((
+                By.XPATH,
+                '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]/div/span'
+            ))
+        )
+        next_button.click()
+        # password.clear()
+        # email.send_keys(self.email)
+        # password.send_keys(self.password)
+        # password.send_keys(keys.Keys.RETURN)
+        # time.sleep(10)
+        # self.is_logged_in = True
         
     #Logout Function
     def logout(self):
@@ -86,26 +95,26 @@ class Twitter_Bot:
         time.sleep(4)
 
         try:
-            bot.find_element_by_xpath("//div[@data-testid='SideNav_AccountSwitcher_Button']").click()
+            bot.find_element(By.XPATH, "//div[@data-testid='SideNav_AccountSwitcher_Button']").click()
         except common.exceptions.NoSuchElementException:
             time.sleep(3)
-            bot.find_element_by_xpath("//div[@data-testid='SideNav_AccountSwitcher_Button']").click()
+            bot.find_element(By.XPATH, "//div[@data-testid='SideNav_AccountSwitcher_Button']").click()
 
         time.sleep(1)
 
         try:
-            bot.find_element_by_xpath("//a[@data-testid='AccountSwitcher_Logout_Button']").click()
+            bot.find_element(By.XPATH, "//a[@data-testid='AccountSwitcher_Logout_Button']").click()
         except common.exceptions.NoSuchElementException:
             time.sleep(2)
-            bot.find_element_by_xpath("//a[@data-testid='AccountSwitcher_Logout_Button']").click()
+            bot.find_element(By.XPATH, "//a[@data-testid='AccountSwitcher_Logout_Button']").click()
 
         time.sleep(3)
 
         try:
-            bot.find_element_by_xpath("//div[@data-testid='confirmationSheetConfirm']").click()
+            bot.find_element(By.XPATH, "//div[@data-testid='confirmationSheetConfirm']").click()
         except common.exceptions.NoSuchElementException:
             time.sleep(3)
-            bot.find_element_by_xpath("//div[@data-testid='confirmationSheetConfirm']").click()
+            bot.find_element(By.XPATH, "//div[@data-testid='confirmationSheetConfirm']").click()
 
         time.sleep(3) 
         self.is_logged_in = False
@@ -120,10 +129,10 @@ class Twitter_Bot:
         bot = self.bot
 
         try:
-            searchbox = bot.find_element_by_xpath("//input[@data-testid='SearchBox_Search_Input']")
+            searchbox = bot.find_element(By.XPATH, "//input[@data-testid='SearchBox_Search_Input']")
         except common.exceptions.NoSuchElementException:
             time.sleep(2)
-            searchbox = bot.find_element_by_xpath("//input[@data-testid='SearchBox_Search_Input']")
+            searchbox = bot.find_element(By.XPATH, "//input[@data-testid='SearchBox_Search_Input']")
 
         searchbox.clear()
         searchbox.send_keys(query)
@@ -144,13 +153,13 @@ class Twitter_Bot:
 
         for i in range(cycles):
             try:
-                bot.find_element_by_xpath("//div[@data-testid='like']").click()
+                bot.find_element(By.XPATH, "//div[@data-testid='like']").click()
                 #like.click()
             except common.exceptions.NoSuchElementException:
                 time.sleep(3)
                 bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)') 
                 time.sleep(3)
-                bot.find_element_by_xpath("//div[@data-testid='like']").click()
+                bot.find_element(By.XPATH, "//div[@data-testid='like']").click()
                 #like.click()
 
             time.sleep(1)
@@ -165,16 +174,16 @@ class Twitter_Bot:
 
         for i in range(cycles):
             try:
-                bot.find_element_by_xpath("//div[@data-testid='retweet']").click()
+                bot.find_element(By.XPATH, "//div[@data-testid='retweet']").click()
                 time.sleep(1)
-                bot.find_element_by_xpath("//div[@data-testid='retweetConfirm']").click()
+                bot.find_element(By.XPATH, "//div[@data-testid='retweetConfirm']").click()
             except common.exceptions.NoSuchElementException:
                 time.sleep(3)
                 bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)')
                 time.sleep(3)
-                bot.find_element_by_xpath("//div[@data-testid='retweet']").click()
+                bot.find_element(By.XPATH, "//div[@data-testid='retweet']").click()
                 time.sleep(1)
-                bot.find_element_by_xpath("//div[@data-testid='retweetConfirm']").click()
+                bot.find_element(By.XPATH, "//div[@data-testid='retweetConfirm']").click()
             time.sleep(1)
             bot.execute_script('window.scrollTo(0,document.body.scrollHeight/2.5)')
             time.sleep(5)
@@ -187,22 +196,22 @@ class Twitter_Bot:
         bot = self.bot  
 
         try:
-            bot.find_element_by_xpath("//a[@data-testid='SideNav_NewTweet_Button']").click()
+            bot.find_element(By.XPATH, "//a[@data-testid='SideNav_NewTweet_Button']").click()
         except common.exceptions.NoSuchElementException:
             time.sleep(3)
-            bot.find_element_by_xpath("//a[@data-testid='SideNav_NewTweet_Button']").click()
+            bot.find_element(By.XPATH, "//a[@data-testid='SideNav_NewTweet_Button']").click()
 
         time.sleep(4) 
         body = tweetBody
 
         try:
-            bot.find_element_by_xpath("//div[@role='textbox']").send_keys(body)
+            bot.find_element(By.XPATH, "//div[@role='textbox']").send_keys(body)
         except common.exceptions.NoSuchElementException:
             time.sleep(3)
-            bot.find_element_by_xpath("//div[@role='textbox']").send_keys(body)
+            bot.find_element(By.XPATH, "//div[@role='textbox']").send_keys(body)
 
         time.sleep(4)
         bot.find_element_by_class_name("notranslate").send_keys(keys.Keys.ENTER)
-        bot.find_element_by_xpath("//div[@data-testid='tweetButton']").click()
+        bot.find_element(By.XPATH, "//div[@data-testid='tweetButton']").click()
         time.sleep(4) 
 
