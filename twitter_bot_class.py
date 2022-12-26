@@ -106,31 +106,20 @@ class Twitter_Bot:
 
         bot = self.bot
         bot.get('https://twitter.com/home')
-        time.sleep(4)
 
-        try:
-            bot.find_element(By.XPATH, "//div[@data-testid='SideNav_AccountSwitcher_Button']").click()
-        except common.exceptions.NoSuchElementException:
-            time.sleep(3)
-            bot.find_element(By.XPATH, "//div[@data-testid='SideNav_AccountSwitcher_Button']").click()
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+                By.XPATH, "//div[@data-testid='SideNav_AccountSwitcher_Button']"
+        )).click()
 
-        time.sleep(1)
 
-        try:
-            bot.find_element(By.XPATH, "//a[@data-testid='AccountSwitcher_Logout_Button']").click()
-        except common.exceptions.NoSuchElementException:
-            time.sleep(2)
-            bot.find_element(By.XPATH, "//a[@data-testid='AccountSwitcher_Logout_Button']").click()
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+                By.XPATH, "//a[@data-testid='AccountSwitcher_Logout_Button']"
+        )).click()
 
-        time.sleep(3)
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+                By.XPATH, "//div[@data-testid='confirmationSheetConfirm']"
+        )).click()
 
-        try:
-            bot.find_element(By.XPATH, "//div[@data-testid='confirmationSheetConfirm']").click()
-        except common.exceptions.NoSuchElementException:
-            time.sleep(3)
-            bot.find_element(By.XPATH, "//div[@data-testid='confirmationSheetConfirm']").click()
-
-        time.sleep(3) 
         self.is_logged_in = False
 
         bot.close()
@@ -142,16 +131,14 @@ class Twitter_Bot:
 
         bot = self.bot
 
-        try:
-            searchbox = bot.find_element(By.XPATH, "//input[@data-testid='SearchBox_Search_Input']")
-        except common.exceptions.NoSuchElementException:
-            time.sleep(2)
-            searchbox = bot.find_element(By.XPATH, "//input[@data-testid='SearchBox_Search_Input']")
+        searchbox = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+                By.XPATH, "//input[@data-testid='SearchBox_Search_Input']"
+        )).click()
 
         searchbox.clear()
         searchbox.send_keys(query)
         searchbox.send_keys(keys.Keys.RETURN)
-        time.sleep(10)  
+        
         """
         url = "https://twitter.com/search?q=" + query
         bot.get(url)
@@ -164,6 +151,8 @@ class Twitter_Bot:
             raise Exception("You must log in first!") 
 
         bot = self.bot
+# TODO Use action chains https://stackoverflow.com/questions/3401343/scroll-element-into-view-with-selenium
+
 
         for i in range(cycles):
             try:
@@ -182,6 +171,7 @@ class Twitter_Bot:
 
     #This function retweets posts based on keywords
     def retweet(self,cycles=10):
+# TODO Use action chains https://stackoverflow.com/questions/3401343/scroll-element-into-view-with-selenium
         if not self.is_logged_in:
             raise Exception("You must log in first!")
         bot = self.bot
@@ -209,23 +199,17 @@ class Twitter_Bot:
 
         bot = self.bot  
 
-        try:
-            bot.find_element(By.XPATH, "//a[@data-testid='SideNav_NewTweet_Button']").click()
-        except common.exceptions.NoSuchElementException:
-            time.sleep(3)
-            bot.find_element(By.XPATH, "//a[@data-testid='SideNav_NewTweet_Button']").click()
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+                By.XPATH, "//a[@data-testid='SideNav_NewTweet_Button']"
+        )).click()
 
-        time.sleep(4) 
-        body = tweetBody
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+                By.XPATH, "//div[@role='textbox']"
+        )).send_keys(tweetBody)
 
-        try:
-            bot.find_element(By.XPATH, "//div[@role='textbox']").send_keys(body)
-        except common.exceptions.NoSuchElementException:
-            time.sleep(3)
-            bot.find_element(By.XPATH, "//div[@role='textbox']").send_keys(body)
-
-        time.sleep(4)
-        bot.find_element_by_class_name("notranslate").send_keys(keys.Keys.ENTER)
-        bot.find_element(By.XPATH, "//div[@data-testid='tweetButton']").click()
-        time.sleep(4) 
-
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+            By.CLASS_NAME, "notranslate"
+        )).send_keys(keys.Keys.ENTER)
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
+            By.XPATH, "//div[@data-testid='tweetButton']"
+        )).send_keys(keys.Keys.ENTER)
