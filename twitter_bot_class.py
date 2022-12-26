@@ -78,12 +78,26 @@ class Twitter_Bot:
             ))
         )
         next_button.click()
-        # password.clear()
-        # email.send_keys(self.email)
-        # password.send_keys(self.password)
-        # password.send_keys(keys.Keys.RETURN)
-        # time.sleep(10)
-        # self.is_logged_in = True
+
+        password_field = WebDriverWait(driver, 60).until(
+            EC.visibility_of_element_located((
+                By.XPATH,
+                '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input'
+            ))
+        )
+        password_field.clear()
+        password_field.send_keys(self.password)
+
+        next_button = WebDriverWait(driver, 60).until(
+            EC.visibility_of_element_located((
+                By.XPATH,
+                '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/div/div'
+            ))
+        )
+        next_button.click()
+
+        self.is_logged_in = True
+
         
     #Logout Function
     def logout(self):
