@@ -22,7 +22,7 @@ Twitter-Bot is an automation bot using Selenium Automation Framework with python
 ## FAQ
 - How to stop the script? Ctrl+C (control+C for Mac) 
 - Script opens browser and nothing happens? Try checking the terminal. It might be asking for credentials.
-- For any other problems, feel free to raise an issue.
+- For any other problems, feel free to raise an issue!
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 
