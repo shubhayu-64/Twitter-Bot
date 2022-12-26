@@ -62,31 +62,15 @@ class Twitter_Bot:
         bot = self.bot
         bot.get('https://twitter.com/login/')
         
-        email_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-            (By.XPATH,
-            '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input')
-        ))
+        email_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME,"text")))
         email_field.clear()
         email_field.send_keys(self.email)
+        email_field.send_keys(keys.Keys().ENTER)
 
-        next_button = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-            (By.XPATH,
-            '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[6]/div/span')
-        ))
-        next_button.click()
-
-        password_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-            (By.XPATH,
-            '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input')
-        ))
+        password_field = WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.NAME, 'password')))
         password_field.clear()
         password_field.send_keys(self.password)
-
-        next_button = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
-            (By.XPATH,
-            '/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/div/div')
-        ))
-        next_button.click()
+        password_field.send_keys(keys.Keys().ENTER)
 
         self.is_logged_in = True
 
@@ -125,8 +109,9 @@ class Twitter_Bot:
 
         searchbox = WebDriverWait(driver, 60).until(EC.visibility_of_element_located(
                 (By.XPATH, "//input[@data-testid='SearchBox_Search_Input']")
-        )).click()
+        ))
 
+        searchbox.click()
         searchbox.clear()
         searchbox.send_keys(query)
         searchbox.send_keys(keys.Keys.RETURN)
@@ -143,9 +128,6 @@ class Twitter_Bot:
             raise Exception("You must log in first!") 
 
         bot = self.bot
-# TODO Use action chains https://stackoverflow.com/questions/3401343/scroll-element-into-view-with-selenium
-
-
         for i in range(cycles):
             try:
                 bot.find_element(By.XPATH, "//div[@data-testid='like']").click()
@@ -163,7 +145,6 @@ class Twitter_Bot:
 
     #This function retweets posts based on keywords
     def retweet(self,cycles=10):
-# TODO Use action chains https://stackoverflow.com/questions/3401343/scroll-element-into-view-with-selenium
         if not self.is_logged_in:
             raise Exception("You must log in first!")
         bot = self.bot
